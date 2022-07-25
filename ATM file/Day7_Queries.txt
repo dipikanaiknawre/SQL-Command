@@ -1,0 +1,71 @@
+CREATE TABLE EMPLOYEE(    
+EMPLOYEE_ID int NOT NULL, FIRST_NAME varchar(255), LAST_NAME varchar(255), DEPT_ID int,Salary int ,Designation varchar2(30), PRIMARY KEY (EMPLOYEE_ID));
+
+
+select EMPLOYEE_ID, first_name, dept_id, salary, to_char( Salary,'99,999.00') as Salary_In from employee
+
+
+select * from employee
+
+select salary from employee where designation = 'QA'
+
+//I want to see the salary of employees whose salary is matching with the QA designation employee salary....
+
+select * from employee where salary IN (select salary from employee where designation = 'QA') AND designation <> 'QA'
+
+//I want to see the salary of employees whose salary is less than the any QA designation employee salary....
+
+select * from employee where salary < ANY (select salary from employee where designation = 'QA') AND designation <> 'QA'
+
+//I want to see the salary of employees whose salary is less than all QA designation employee salary....
+
+select * from employee where salary < ALL (select salary from employee where designation = 'QA') AND designation <> 'QA'
+
+// second highest salary
+
+get max salary--> get list of salary whose salary is less than the max salary --> frm that list get the max salary : o/p Second highest salry...
+
+//third highest salary..
+
+Get the list of salary whose salary is less than the second highest salary --> from tht list get the max salary...
+
+select * from employee
+
+select * from employee where employee_id = 20
+
+update employee set salary = 50000 where employee_id =30
+
+update employee set salary = 35000, dept_id = 50 where employee_id =20
+select * from employee where employee_id = 20
+
+
+select * from employee
+
+delete from employee where designation = 'QA'
+
+
+Syntax FOr insert
+
+// INSERT INTO TABLE_NAME VALUES(value1,value2,value....)
+
+FOr Update:
+
+UPDATE TABLE_NAME SET column_name = value, col_name2= value2,....<<condition>>
+
+
+For delete:
+
+DELETE from TABLE_NAME where <<condition>>
+
+select * from employee
+
+truncate table employee
+//with truncate all the rows will be deleted keeping table structure as it is...so that you can further inser the values into the table
+
+insert into EMPLOYEE values(10,'Sumit','Pendkar',40,25000,'QA');
+insert into EMPLOYEE values(20,'Sandesh','Pawar',40,28000,'QA');
+insert into EMPLOYEE values(30,'Prashant','Rathor',50,35000,'Senior QA');
+insert into EMPLOYEE values(40,'Vijay','Dhanekar',60,32000,'Senior QA');
+
+drop table employee
+//drop table completely drop off the table along with the structure,.....and there is no existance of the table...
